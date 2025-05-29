@@ -1,0 +1,259 @@
+/* Basic styling for the Kanban board application */
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em 0;
+    text-align: center;
+}
+
+main {
+    padding: 1em;
+}
+
+#kanban-board {
+    border: 1px solid #ccc;
+    padding: 1em;
+    margin-bottom: 1em;
+    background-color: #fff;
+    min-height: 300px; /* For visual distinction */
+}
+
+#iteration-settings {
+    border: 1px solid #ccc;
+    padding: 1em;
+    margin-bottom: 1em;
+    background-color: #fff;
+}
+
+#iteration-settings h2, #iteration-settings h3 {
+    margin-top: 0;
+}
+
+#iteration-settings label {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+#iteration-settings input[type="date"],
+#iteration-settings input[type="number"] {
+    margin-bottom: 1em;
+    padding: 0.5em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#holiday-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#holiday-list li {
+    margin-bottom: 0.5em;
+}
+
+#task-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 2em;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure it's on top */
+}
+
+#task-modal h2 {
+    margin-top: 0;
+}
+
+#task-modal label {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+#task-modal input[type="text"],
+#task-modal textarea,
+#task-modal input[type="number"] {
+    width: calc(100% - 1em); /* Account for padding */
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#task-modal textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 0.7em 1.5em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 0.5em;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#cancel-task, #add-holiday {
+    background-color: #6c757d;
+}
+
+#cancel-task:hover, #add-holiday:hover {
+    background-color: #545b62;
+}
+
+/* Styles for Drag and Drop */
+.task-item.dragging {
+    opacity: 0.5;
+    background-color: #e9ecef; /* Light grey to indicate it's being moved */
+}
+
+.kanban-column.dragover-column {
+    background-color: #e0e0e0; /* Slightly darker background for drop target */
+    border-color: #007bff; /* Highlight border */
+}
+
+/* Additional styling for task items and columns for better visual separation */
+.kanban-column {
+    background-color: #f8f9fa;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    min-height: 200px; /* Ensure columns have some height even when empty */
+    display: flex; /* Use flexbox for column layout */
+    flex-direction: column; /* Stack items vertically */
+    flex: 1; /* Allow columns to grow and share space */
+}
+
+.tasks-container {
+    min-height: 150px; /* Minimum height for the tasks area within a column */
+    border: 1px dashed #ccc; /* Visual cue for where tasks go */
+    padding: 5px;
+    border-radius: 3px;
+    flex-grow: 1; /* Allow tasks container to fill column space */
+}
+
+.task-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    cursor: grab; /* Indicate draggable items */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.task-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Ensure header and main content are clearly separated */
+#kanban-board {
+    display: flex; /* Use flexbox for columns */
+    justify-content: space-around; /* Distribute columns evenly */
+    align-items: flex-start; /* Align columns to the top */
+}
+
+/* Iteration Settings - Holidays List */
+#holidays-list {
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0; /* Remove default padding if it were a ul */
+}
+
+.holiday-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.holiday-item span {
+    flex-grow: 1;
+}
+
+.remove-holiday-btn {
+    background-color: #dc3545; /* Red color for removal */
+    color: white;
+    padding: 0.3em 0.8em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-left: 1em;
+}
+
+.remove-holiday-btn:hover {
+    background-color: #c82333;
+}
+
+#iteration-settings input[type="date"],
+#iteration-settings input[type="number"],
+#iteration-settings button {
+    margin-top: 0.25em; /* Add a bit of top margin for spacing */
+}
+
+/* Workload Summary Styles */
+#workload-summary {
+    border: 1px solid #ccc;
+    padding: 1em;
+    margin-top: 1em; /* Space it from iteration settings */
+    margin-bottom: 1em;
+    background-color: #fff;
+}
+
+#workload-summary label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+#workload-bar-container {
+    width: 100%; /* Make it responsive to parent */
+    max-width: 300px; /* Optional: set a max-width */
+    height: 25px;
+    border: 1px solid #ddd;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    margin-bottom: 0.5em;
+    overflow: hidden; /* Ensures the inner bar respects border-radius */
+}
+
+#workload-bar {
+    height: 100%;
+    background-color: #4caf50; /* Default Green */
+    width: 0%; /* Initial width */
+    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    text-align: center; /* For potential future text inside bar */
+    color: white;
+    font-size: 0.8em;
+    line-height: 25px; /* Vertically center text if any */
+}
+
+/* #workload-bar.workload-bar-overlimit { background-color: red !important; } */
+/* The JS directly sets background color to red, so explicit class might not be needed unless preferred */
+
+#workload-text {
+    font-size: 0.9em;
+    color: #333;
+}
